@@ -1,0 +1,12 @@
+/*
+ * Rule Name  : isNotNullOrEmptyOrZero
+ * Description: Checks if a given value is NOT null, NOT empty, and NOT zero.
+ * Input      : ri!value  - The value to validate (number, text, etc.)
+ * Returns    : Boolean   - true if value is present and non-zero, false otherwise
+ */
+
+and(
+  not(a!isNullOrEmpty(ri!value)),
+  not(ri!value = 0),
+  not(ri!value = "0")
+)
