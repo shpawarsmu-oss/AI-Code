@@ -27,7 +27,10 @@
                 <name>string</name>
                 <namespace>http://www.w3.org/2001/XMLSchema</namespace>
             </type>
+            <value/>
         </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
     </expressionRule>
     <roleMap public="true">
         <role inherit="true" allowForAll="false" name="readers">
