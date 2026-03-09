@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000ef01-21b7-8000-bad0-01ef9001ef90_1096667</versionUuid>
+    <interface>
+        <name>TCS_CreateOrUpdateEmployee</name>
+        <uuid>b26fc0d0-477a-4f37-9eaf-d3e658beb1b4</uuid>
+        <description>Form interface for creating or updating Employees as an action</description>
+        <parentUuid>adc46f5b-b3a3-4bd2-875f-95dc1b9d0abc</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>#"SYSTEM_SYSRULES_formLayout_v2"(
+  titleBar: #"SYSTEM_SYSRULES_sidebarTemplate"(
+    title: if(
+      ri!isUpdate,
+      "Update Employee",
+      "Create Employee"
+    ),
+    secondaryText: if(
+      ri!isUpdate,
+      "Update details for the employee",
+      "Enter details for the employee"
+    ),
+    backgroundColor: "ACCENT",
+    image: #"SYSTEM_SYSRULES_documentImage"(#"SYSTEM_SYSRULES_EXAMPLE_TITLE_BAR_IMAGE"())
+  ),
+  isTitleBarFixed: true,
+  showTitleBarDivider: false,
+  backgroundColor: "#F6F7F9",
+  contents: {
+    #"SYSTEM_SYSRULES_cardLayout"(
+      contents: {
+        #"SYSTEM_SYSRULES_textField"(
+          label: "First Name",
+          labelPosition: "ABOVE",
+          value: ri!record[#"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/a9d440fe-e444-4810-8dee-f5a52875df83"],
+          saveInto: ri!record[#"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/a9d440fe-e444-4810-8dee-f5a52875df83"],
+          characterLimit: 255,
+          showCharacterCount: false,
+          required: true
+        ),
+        #"SYSTEM_SYSRULES_textField"(
+          label: "Last Name",
+          labelPosition: "ABOVE",
+          value: ri!record[#"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/75f70711-c7bc-40f9-ac0c-6293f1f6716d"],
+          saveInto: ri!record[#"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/75f70711-c7bc-40f9-ac0c-6293f1f6716d"],
+          characterLimit: 255,
+          showCharacterCount: false,
+          required: true,
+          marginAbove: "LESS"
+        ),
+        #"SYSTEM_SYSRULES_textField"(
+          label: "Employee Code",
+          labelPosition: "ABOVE",
+          value: ri!record[#"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/67cc3da4-f64d-450a-bf5d-d2278db042bc"],
+          saveInto: ri!record[#"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/67cc3da4-f64d-450a-bf5d-d2278db042bc"],
+          characterLimit: 255,
+          showCharacterCount: false,
+          required: true,
+          marginAbove: "LESS"
+        ),
+        #"SYSTEM_SYSRULES_textField"(
+          label: "Personal Email",
+          labelPosition: "ABOVE",
+          value: ri!record[#"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/9ed611ea-79ac-44c6-955e-d4c80f24fe99"],
+          saveInto: ri!record[#"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/9ed611ea-79ac-44c6-955e-d4c80f24fe99"],
+          characterLimit: 255,
+          showCharacterCount: false,
+          required: true,
+          marginAbove: "LESS"
+        ),
+        #"SYSTEM_SYSRULES_textField"(
+          label: "Corporate Email",
+          labelPosition: "ABOVE",
+          value: ri!record[#"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/084c4043-d7eb-4b2c-8f86-c6af0f17975a"],
+          saveInto: ri!record[#"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/084c4043-d7eb-4b2c-8f86-c6af0f17975a"],
+          characterLimit: 255,
+          showCharacterCount: false,
+          required: true,
+          marginAbove: "LESS"
+        ),
+        #"SYSTEM_SYSRULES_textField"(
+          label: "Department",
+          labelPosition: "ABOVE",
+          value: ri!record[#"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/9d928d35-f095-4753-837b-363f0ef8466b"],
+          saveInto: ri!record[#"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/9d928d35-f095-4753-837b-363f0ef8466b"],
+          characterLimit: 255,
+          showCharacterCount: false,
+          required: true,
+          marginAbove: "LESS"
+        ),
+        #"SYSTEM_SYSRULES_textField"(
+          label: "Job Title",
+          labelPosition: "ABOVE",
+          value: ri!record[#"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/1bddc878-3c92-4286-b49b-09c74a0f468b"],
+          saveInto: ri!record[#"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/1bddc878-3c92-4286-b49b-09c74a0f468b"],
+          characterLimit: 255,
+          showCharacterCount: false,
+          required: true,
+          marginAbove: "LESS"
+        ),
+        #"SYSTEM_SYSRULES_dateTimeField"(
+          label: "Start Date",
+          labelPosition: "ABOVE",
+          value: ri!record[#"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/10fa0a31-e08f-4b0a-a8fc-dff20c1caec0"],
+          saveInto: ri!record[#"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/10fa0a31-e08f-4b0a-a8fc-dff20c1caec0"],
+          required: true,
+          marginAbove: "LESS"
+        ),
+        #"SYSTEM_SYSRULES_integerField"(
+          label: "Manager Id",
+          labelPosition: "ABOVE",
+          value: ri!record[#"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/d4c983a7-711a-49f2-b633-d45c22dcef3b"],
+          saveInto: ri!record[#"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/d4c983a7-711a-49f2-b633-d45c22dcef3b"],
+          required: true,
+          marginAbove: "LESS"
+        ),
+        #"SYSTEM_SYSRULES_textField"(
+          label: "Onboarding Stage",
+          labelPosition: "ABOVE",
+          value: ri!record[#"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/444eab6d-d49c-4fd2-9df8-ff344082e5c5"],
+          saveInto: ri!record[#"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/444eab6d-d49c-4fd2-9df8-ff344082e5c5"],
+          characterLimit: 255,
+          showCharacterCount: false,
+          required: true,
+          marginAbove: "LESS"
+        ),
+        #"SYSTEM_SYSRULES_textField"(
+          label: "Onboarding Status",
+          labelPosition: "ADJACENT",
+          value: ri!record[#"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/5886000f-6009-4aeb-aab0-2a4aa4a031fd"],
+          saveInto: ri!record[#"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/5886000f-6009-4aeb-aab0-2a4aa4a031fd"],
+          characterLimit: 255,
+          showCharacterCount: false,
+          required: true,
+          marginAbove: "LESS"
+        ),
+        #"SYSTEM_SYSRULES_checkboxField_v1"(
+          choiceLabels: { "Is Active" },
+          choiceValues: { true },
+          labelPosition: "COLLAPSED",
+          value: if(
+            ri!record[#"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/d8b5e486-d584-4055-b5f9-30035bea3b50"],
+            true,
+            null
+          ),
+          saveInto: a!save(
+            ri!record[#"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/d8b5e486-d584-4055-b5f9-30035bea3b50"],
+            if(isnull(save!value), false, true)
+          ),
+          spacing: "MORE",
+          marginAbove: "STANDARD"
+        )
+      },
+      style: "NONE",
+      shape: "SEMI_ROUNDED",
+      padding: "MORE"
+    )
+  },
+  contentsWidth: "FULL",
+  buttons: #"SYSTEM_SYSRULES_ButtonLayout"(
+    primaryButtons: {
+      #"SYSTEM_SYSRULES_buttonWidget_v1"(
+        label: if(
+          ri!isUpdate,
+          "Save",
+          "Create"
+        ),
+        saveInto: {
+          if(
+            ri!isUpdate,
+            {
+              a!save(
+                target: ri!record[#"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/9a7533f3-dbff-4482-8856-72a21a06363e"],
+                value: loggedInUser()
+              ),
+              a!save(
+                target: ri!record[#"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/903dfa1c-7cd3-4fe4-aaa7-610b2b671941"],
+                value: now()
+              )
+            },
+            {
+              a!save(
+                target: ri!record[#"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/b1436231-0c0e-48a9-bca4-043de7cf1234"],
+                value: loggedInUser()
+              ),
+              a!save(
+                target: ri!record[#"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/a2d840d4-81c6-4847-9041-3263de4fd84e"],
+                value: now()
+              )
+            }
+          )
+        },
+        submit: true,
+        style: "SOLID",
+        validate: true
+      )
+    },
+    secondaryButtons: {
+      #"SYSTEM_SYSRULES_buttonWidget_v1"(
+        label: "Cancel",
+        value: true,
+        saveInto: ri!cancel,
+        submit: true,
+        style: "OUTLINE",
+        validate: false
+      )
+    }
+  )
+)</definition>
+        <namedTypedValue>
+            <name>record</name>
+            <type>
+                <name>935291e5-21cd-4303-bec4-49aacd414213</name>
+                <namespace>urn:com:appian:recordtype:datatype</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>cancel</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>isUpdate</name>
+            <description>Tracks whether this form is being used to create a new record or update an existing one</description>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+        <isCustom>false</isCustom>
+    </interface>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="37f49f3e-471c-44c4-8b5b-82a1f8d585c0"/>
+        <historyInfo versionUuid="_a-0000ef01-21b7-8000-bad0-01ef9001ef90_1096667"/>
+    </history>
+</contentHaul>

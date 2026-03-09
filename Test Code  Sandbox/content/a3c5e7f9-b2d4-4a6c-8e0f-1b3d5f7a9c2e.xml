@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>b4d6f8a0-c3e5-4b7d-9f1a-2c4e6a8b0d3f</versionUuid>
+    <rule>
+        <name>TCS_ER_nullCheck</name>
+        <uuid>a3c5e7f9-b2d4-4a6c-8e0f-1b3d5f7a9c2e</uuid>
+        <description>Reusable null-safe utility rule. Returns ri!value when it is not null and not empty; otherwise returns ri!defaultValue. Used by TCS_auditEmployee and other expression rules for safe field access.</description>
+        <parentUuid>adc46f5b-b3a3-4bd2-875f-95dc1b9d0abc</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>/* ============================================================
+   TCS_ER_nullCheck — Reusable Null-Safe Value Utility
+
+   Returns ri!value when it is not null and not empty-string;
+   otherwise returns ri!defaultValue.
+
+   Rule Inputs (ri!):
+     value        - Text - The value to test for null / emptiness
+     defaultValue - Text - Fallback returned when value is null
+                           or empty string  (default: "")
+
+   Usage:
+     rule!TCS_ER_nullCheck(value: ri!someField, defaultValue: "N/A")
+
+   Referenced by:
+     rule!TCS_auditEmployee   — null-safe field comparison log
+     rule!TCS_QR_getEmployee  — query result safe display
+   ============================================================ */
+if(
+  or(isnull(ri!value), ri!value = ""),
+  if(isnull(ri!defaultValue), "", ri!defaultValue),
+  ri!value
+)</definition>
+        <namedTypedValue>
+            <name>value</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>defaultValue</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="b4d6f8a0-c3e5-4b7d-9f1a-2c4e6a8b0d3f"/>
+    </history>
+</contentHaul>

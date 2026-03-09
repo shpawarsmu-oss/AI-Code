@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000ef01-21b7-8000-bad0-01ef9001ef90_1096516</versionUuid>
+    <rule>
+        <name>TCS_auditEmployee</name>
+        <uuid>_a-0000ef01-21b7-8000-bad0-01ef9001ef90_1096443</uuid>
+        <description></description>
+        <parentUuid>adc46f5b-b3a3-4bd2-875f-95dc1b9d0abc</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>/* ============================================================
+   writeAuditLog — Field-Level Audit Expression Rule
+   Record Type : TCS Audit Log
+                 {edb6b43f-1d34-46dd-8e03-30ed591381f6}
+
+   Rule Inputs (ri!):
+     oldRecord       - CDT     - Employee record BEFORE change (null on INSERT)
+     newRecord       - CDT     - Employee record AFTER change  (required)
+     targetTable     - Text    - e.g. "Employee"
+     targetRecordId  - Integer - PK of the changed record
+     changeType      - Text    - "INSERT" | "UPDATE" | "DELETE"
+     processId       - Text    - Appian process instance ID   (optional)
+     sessionId       - Text    - HTTP session / API call ID   (optional)
+     comments        - Text    - Free-text reason for change  (optional)
+   ============================================================ */
+a!localVariables(
+  /* ── Null-safe old / new record references ───────────────── */
+  local!oldRec: if(
+    isnull(ri!oldRecord),
+    ri!newRecord,
+    ri!oldRecord
+  ),
+  local!newRec: if(
+    isnull(ri!newRecord),
+    local!oldRec,
+    ri!newRecord
+  ),
+  /* ── Null-safe metadata ──────────────────────────────────── */
+  local!safeTargetTable: tostring(
+    if(isnull(ri!targetTable), "Unknown", ri!targetTable)
+  ),
+  local!safeTargetId: tointeger(
+    if(isnull(ri!targetRecordId), -1, ri!targetRecordId)
+  ),
+  local!safeChangeType: tostring(
+    if(isnull(ri!changeType), "UPDATE", ri!changeType)
+  ),
+  local!safeProcessId: tostring(
+    if(isnull(ri!processId), "", ri!processId)
+  ),
+  local!safeSessionId: tostring(
+    if(isnull(ri!sessionId), "", ri!sessionId)
+  ),
+  local!safeComments: tostring(
+    if(isnull(ri!comments), "", ri!comments)
+  ),
+  local!safeChangedBy: tostring(
+    if(isnull(loggedInUser()), "system", loggedInUser())
+  ),
+  local!safeNow: now(),
+  /* ── Field comparison list ───────────────────────────────── */
+  local!fieldComparisons: {
+    a!map(
+      fieldName: "firstName",
+      oldValue: tostring(if(isnull(local!oldRec.firstName), "", local!oldRec.firstName)),
+      newValue: tostring(if(isnull(local!newRec.firstName), "", local!newRec.firstName))
+    ),
+    a!map(
+      fieldName: "lastName",
+      oldValue: tostring(if(isnull(local!oldRec.lastName), "", local!oldRec.lastName)),
+      newValue: tostring(if(isnull(local!newRec.lastName), "", local!newRec.lastName))
+    ),
+    a!map(
+      fieldName: "employeeCode",
+      oldValue: tostring(if(isnull(local!oldRec.employeeCode), "", local!oldRec.employeeCode)),
+      newValue: tostring(if(isnull(local!newRec.employeeCode), "", local!newRec.employeeCode))
+    ),
+    a!map(
+      fieldName: "personalEmail",
+      oldValue: tostring(if(isnull(local!oldRec.personalEmail), "", local!oldRec.personalEmail)),
+      newValue: tostring(if(isnull(local!newRec.personalEmail), "", local!newRec.personalEmail))
+    ),
+    a!map(
+      fieldName: "corporateEmail",
+      oldValue: tostring(if(isnull(local!oldRec.corporateEmail), "", local!oldRec.corporateEmail)),
+      newValue: tostring(if(isnull(local!newRec.corporateEmail), "", local!newRec.corporateEmail))
+    ),
+    a!map(
+      fieldName: "department",
+      oldValue: tostring(if(isnull(local!oldRec.department), "", local!oldRec.department)),
+      newValue: tostring(if(isnull(local!newRec.department), "", local!newRec.department))
+    ),
+    a!map(
+      fieldName: "jobTitle",
+      oldValue: tostring(if(isnull(local!oldRec.jobTitle), "", local!oldRec.jobTitle)),
+      newValue: tostring(if(isnull(local!newRec.jobTitle), "", local!newRec.jobTitle))
+    ),
+    a!map(
+      fieldName: "startDate",
+      oldValue: tostring(if(isnull(local!oldRec.startDate), "", local!oldRec.startDate)),
+      newValue: tostring(if(isnull(local!newRec.startDate), "", local!newRec.startDate))
+    ),
+    a!map(
+      fieldName: "managerId",
+      oldValue: tostring(if(isnull(local!oldRec.managerId), "", local!oldRec.managerId)),
+      newValue: tostring(if(isnull(local!newRec.managerId), "", local!newRec.managerId))
+    ),
+    a!map(
+      fieldName: "onboardingStage",
+      oldValue: tostring(if(isnull(local!oldRec.onboardingStage), "", local!oldRec.onboardingStage)),
+      newValue: tostring(if(isnull(local!newRec.onboardingStage), "", local!newRec.onboardingStage))
+    ),
+    a!map(
+      fieldName: "onboardingStatus",
+      oldValue: tostring(if(isnull(local!oldRec.onboardingStatus), "", local!oldRec.onboardingStatus)),
+      newValue: tostring(if(isnull(local!newRec.onboardingStatus), "", local!newRec.onboardingStatus))
+    )
+  },
+  /* ── Keep only fields where value actually changed ───────── */
+  local!changedMask: #"SYSTEM_SYSRULES_forEach"(
+    items: local!fieldComparisons,
+    expression: fv!item.oldValue &lt;&gt; fv!item.newValue
+  ),
+  local!changedIndices: wherecontains(true, local!changedMask),
+  local!changedFields: if(
+    or(isnull(local!changedIndices), length(local!changedIndices) = 0),
+    {},
+    index(local!fieldComparisons, local!changedIndices)
+  ),
+  /* ── Write one TCS Audit Log record per changed field ─────── */
+  if(
+    or(isnull(local!changedFields), length(local!changedFields) = 0),
+    null,
+    #"SYSTEM_SYSRULES_forEach"(
+      items: local!changedFields,
+      expression: if(
+        or(isnull(fv!item.fieldName), fv!item.fieldName = ""),
+        null,
+        #"SYSTEM_SYSRULES_writeToDataStoreEntity"(
+          dataStoreEntity: cons!AUDIT_LOG_ENTITY,
+          valueToStore: a!record(
+            recordType: #"urn:appian:record-type:v1:edb6b43f-1d34-46dd-8e03-30ed591381f6",
+            #"urn:appian:record-field:v1:edb6b43f-1d34-46dd-8e03-30ed591381f6/faa53884-475c-4cd9-ac2f-b5ee9f2b9edf":     local!safeTargetTable,
+            #"urn:appian:record-field:v1:edb6b43f-1d34-46dd-8e03-30ed591381f6/6a5fdbc4-6b5a-4c9c-9d0a-1284f4743e3f":  local!safeTargetId,
+            #"urn:appian:record-field:v1:edb6b43f-1d34-46dd-8e03-30ed591381f6/17f31047-a5bd-4e35-b18b-9c986d3a4c68":        tostring(fv!item.fieldName),
+            #"urn:appian:record-field:v1:edb6b43f-1d34-46dd-8e03-30ed591381f6/d828d98b-eae4-4284-a132-a4f02afd2d38":         tostring(if(isnull(fv!item.oldValue), "", fv!item.oldValue)),
+            #"urn:appian:record-field:v1:edb6b43f-1d34-46dd-8e03-30ed591381f6/3c9e675f-cdf2-4d4b-91c2-265a506afde0":         tostring(if(isnull(fv!item.newValue), "", fv!item.newValue)),
+            #"urn:appian:record-field:v1:edb6b43f-1d34-46dd-8e03-30ed591381f6/59d1a04d-ea95-47c3-afb4-65bc8550fc76":       local!safeChangeType,
+            #"urn:appian:record-field:v1:edb6b43f-1d34-46dd-8e03-30ed591381f6/8f27a277-2bac-4bb4-ad12-3a6d111178bb":        local!safeProcessId,
+            #"urn:appian:record-field:v1:edb6b43f-1d34-46dd-8e03-30ed591381f6/21b673b4-7f8a-45ea-af7a-767ed2ee506b":        local!safeSessionId,
+            #"urn:appian:record-field:v1:edb6b43f-1d34-46dd-8e03-30ed591381f6/49101ea9-4093-4ac8-b3d1-ab09983b9834":         local!safeComments,
+            #"urn:appian:record-field:v1:edb6b43f-1d34-46dd-8e03-30ed591381f6/d33e7922-8083-44f2-9274-8293a7c0c6ad":         true,
+            #"urn:appian:record-field:v1:edb6b43f-1d34-46dd-8e03-30ed591381f6/7756758a-1086-4297-a1dc-03e50f257a25":        local!safeChangedBy,
+            #"urn:appian:record-field:v1:edb6b43f-1d34-46dd-8e03-30ed591381f6/a29f66f7-257d-41aa-9e88-7227e4f76daa":        local!safeNow,
+            #"urn:appian:record-field:v1:edb6b43f-1d34-46dd-8e03-30ed591381f6/32d5efa2-1611-4d7d-ae4d-638c1040daaa":       local!safeChangedBy,
+            #"urn:appian:record-field:v1:edb6b43f-1d34-46dd-8e03-30ed591381f6/22f39677-4d25-4e84-ba33-8f27c5e876bd":       local!safeNow
+          )
+        )
+      )
+    )
+  )
+)</definition>
+        <namedTypedValue>
+            <name>newRecord</name>
+            <type>
+                <name>edb6b43f-1d34-46dd-8e03-30ed591381f6</name>
+                <namespace>urn:com:appian:recordtype:datatype</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>targetTable</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>targetRecordId</name>
+            <type>
+                <name>int</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>changeType</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>processId</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>comments</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>oldRecord</name>
+            <type>
+                <name>edb6b43f-1d34-46dd-8e03-30ed591381f6</name>
+                <namespace>urn:com:appian:recordtype:datatype</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>sessionId</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000ef01-21b7-8000-bad0-01ef9001ef90_1096516"/>
+    </history>
+</contentHaul>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>c1d2e3f4-a5b6-4c7d-8e9f-0a1b2c3d4e5f</versionUuid>
+    <rule>
+        <name>TCS_ER_BannerMessage</name>
+        <uuid>BannerMessage</uuid>
+        <description>Banner message expression rule for end users. Displays a maintenance warning, an active custom banner, or a default welcome message based on system constants MAINTENANCE_MODE and ACTIVE_BANNER_MESSAGE.</description>
+        <parentUuid>adc46f5b-b3a3-4bd2-875f-95dc1b9d0abc</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>/* ============================================================
+   TCS_ER_BannerMessage — End User Banner Message
+
+   Displays a dynamic banner message to end users based on
+   system constants:
+
+   Constants Used:
+     cons!MAINTENANCE_MODE       - Boolean - true during maintenance
+     cons!ACTIVE_BANNER_MESSAGE  - Text    - Custom banner message
+
+   Returns:
+     Text - Banner message to be shown on the interface
+
+   Usage:
+     rule!TCS_ER_BannerMessage()
+
+   Referenced by:
+     Interface: TCS_IF_BannerMessage
+   ============================================================ */
+if(
+  cons!MAINTENANCE_MODE = true,
+  "⚠️ System Maintenance: The system is currently under maintenance. Please try again later.",
+  if(
+    not(isnull(cons!ACTIVE_BANNER_MESSAGE)),
+    cons!ACTIVE_BANNER_MESSAGE,
+    "✅ Welcome! All systems are operating normally. For support, contact helpdesk@company.com"
+  )
+)</definition>
+        <preferredEditor>legacy</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="c1d2e3f4-a5b6-4c7d-8e9f-0a1b2c3d4e5f"/>
+    </history>
+</contentHaul>

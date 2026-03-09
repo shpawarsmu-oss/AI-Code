@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<processModelFolderHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>6022e71b-5aeb-42a3-a430-48dbc10d70ac</versionUuid>
+    <processModelFolder>
+        <name>TCS Process Models</name>
+        <uuid>f0822154-67a7-4f04-9d4e-3caed55fbc4d</uuid>
+        <description>Stores process models for the application</description>
+    </processModelFolder>
+    <roleMap>
+        <role name="ADMIN_OWNER">
+            <users/>
+            <groups>
+                <groupUuid>1c1de46b-4b0a-4216-8551-3bbfcaf460ad</groupUuid>
+            </groups>
+        </role>
+        <role name="EDITOR">
+            <users/>
+            <groups/>
+        </role>
+        <role name="EXPLICIT_NONMEMBER">
+            <users/>
+            <groups/>
+        </role>
+        <role name="VIEWER">
+            <users/>
+            <groups>
+                <groupUuid>fd6d09ad-4a10-4aff-8e17-f5f9a58dccce</groupUuid>
+            </groups>
+        </role>
+        <role name="MANAGER">
+            <users/>
+            <groups/>
+        </role>
+        <role name="INITIATOR">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="6022e71b-5aeb-42a3-a430-48dbc10d70ac"/>
+    </history>
+</processModelFolderHaul>

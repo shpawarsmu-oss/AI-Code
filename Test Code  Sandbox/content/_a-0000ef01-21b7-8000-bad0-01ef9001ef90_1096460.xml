@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000ef01-21b7-8000-bad0-01ef9001ef90_1096471</versionUuid>
+    <rule>
+        <name>TCS_QR_getEmployee</name>
+        <uuid>_a-0000ef01-21b7-8000-bad0-01ef9001ef90_1096460</uuid>
+        <description>employee </description>
+        <parentUuid>adc46f5b-b3a3-4bd2-875f-95dc1b9d0abc</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>#"SYSTEM_SYSRULES_queryRecordType_v3"(
+  recordType: #"urn:appian:record-type:v1:edb6b43f-1d34-46dd-8e03-30ed591381f6",
+  fields: {
+    #"urn:appian:record-field:v1:edb6b43f-1d34-46dd-8e03-30ed591381f6/3cc99fc4-852d-46a2-be26-263ae8539d41",
+    #"urn:appian:record-field:v1:edb6b43f-1d34-46dd-8e03-30ed591381f6/faa53884-475c-4cd9-ac2f-b5ee9f2b9edf",
+    #"urn:appian:record-field:v1:edb6b43f-1d34-46dd-8e03-30ed591381f6/6a5fdbc4-6b5a-4c9c-9d0a-1284f4743e3f",
+    #"urn:appian:record-field:v1:edb6b43f-1d34-46dd-8e03-30ed591381f6/17f31047-a5bd-4e35-b18b-9c986d3a4c68",
+    #"urn:appian:record-field:v1:edb6b43f-1d34-46dd-8e03-30ed591381f6/d828d98b-eae4-4284-a132-a4f02afd2d38",
+    #"urn:appian:record-field:v1:edb6b43f-1d34-46dd-8e03-30ed591381f6/3c9e675f-cdf2-4d4b-91c2-265a506afde0",
+    #"urn:appian:record-field:v1:edb6b43f-1d34-46dd-8e03-30ed591381f6/59d1a04d-ea95-47c3-afb4-65bc8550fc76",
+    #"urn:appian:record-field:v1:edb6b43f-1d34-46dd-8e03-30ed591381f6/8f27a277-2bac-4bb4-ad12-3a6d111178bb",
+    #"urn:appian:record-field:v1:edb6b43f-1d34-46dd-8e03-30ed591381f6/21b673b4-7f8a-45ea-af7a-767ed2ee506b",
+    #"urn:appian:record-field:v1:edb6b43f-1d34-46dd-8e03-30ed591381f6/49101ea9-4093-4ac8-b3d1-ab09983b9834",
+    #"urn:appian:record-field:v1:edb6b43f-1d34-46dd-8e03-30ed591381f6/d33e7922-8083-44f2-9274-8293a7c0c6ad",
+    #"urn:appian:record-field:v1:edb6b43f-1d34-46dd-8e03-30ed591381f6/7756758a-1086-4297-a1dc-03e50f257a25",
+    #"urn:appian:record-field:v1:edb6b43f-1d34-46dd-8e03-30ed591381f6/a29f66f7-257d-41aa-9e88-7227e4f76daa",
+    #"urn:appian:record-field:v1:edb6b43f-1d34-46dd-8e03-30ed591381f6/32d5efa2-1611-4d7d-ae4d-638c1040daaa",
+    #"urn:appian:record-field:v1:edb6b43f-1d34-46dd-8e03-30ed591381f6/22f39677-4d25-4e84-ba33-8f27c5e876bd"
+  },
+  pagingInfo: #"SYSTEM_SYSRULES_pagingInfo"(
+    startIndex: 1,
+    batchSize: 100
+  )
+).data</definition>
+        <preferredEditor>legacy</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000ef01-21b7-8000-bad0-01ef9001ef90_1096471"/>
+    </history>
+</contentHaul>

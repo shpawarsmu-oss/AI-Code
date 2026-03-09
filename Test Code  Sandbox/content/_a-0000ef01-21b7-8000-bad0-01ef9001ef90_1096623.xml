@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000ef01-21b7-8000-bad0-01ef9001ef90_1096634</versionUuid>
+    <interface>
+        <name>TCS_FRM_employeeDetails</name>
+        <uuid>_a-0000ef01-21b7-8000-bad0-01ef9001ef90_1096623</uuid>
+        <description>Employee</description>
+        <parentUuid>adc46f5b-b3a3-4bd2-875f-95dc1b9d0abc</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>
+a!localVariables(
+  local!employee: rv!record,
+
+  #"SYSTEM_SYSRULES_formLayout_v2"(
+    label: "Employee Record",
+    labelSize: "MEDIUM_PLUS",
+    contents: {
+
+      /* =========================================================
+         SECTION 1 - Personal Information
+      ========================================================= */
+      #"SYSTEM_SYSRULES_sectionLayout_v1"(
+        label: "Personal Information",
+        labelSize: "MEDIUM",
+        divider: "BELOW",
+        contents: {
+          #"SYSTEM_SYSRULES_columnsLayout"(
+            columns: {
+              #"SYSTEM_SYSRULES_columnLayout"(
+                contents: {
+                  #"SYSTEM_SYSRULES_textField"(
+                    label: "Employee ID",
+                    labelPosition: "ABOVE",
+                    value: local!employee[
+                      #"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/0143b764-e494-4720-8d39-84fb744b86ab"
+                    ],
+                    readOnly: true
+                  ),
+                  #"SYSTEM_SYSRULES_textField"(
+                    label: "Employee Code",
+                    labelPosition: "ABOVE",
+                    value: local!employee[
+                      #"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/67cc3da4-f64d-450a-bf5d-d2278db042bc"
+                    ],
+                    readOnly: true
+                  )
+                }
+              ),
+              #"SYSTEM_SYSRULES_columnLayout"(
+                contents: {
+                  #"SYSTEM_SYSRULES_textField"(
+                    label: "First Name",
+                    labelPosition: "ABOVE",
+                    value: local!employee[
+                      #"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/a9d440fe-e444-4810-8dee-f5a52875df83"
+                    ],
+                    readOnly: true
+                  ),
+                  #"SYSTEM_SYSRULES_textField"(
+                    label: "Last Name",
+                    labelPosition: "ABOVE",
+                    value: local!employee[
+                      #"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/75f70711-c7bc-40f9-ac0c-6293f1f6716d"
+                    ],
+                    readOnly: true
+                  )
+                }
+              )
+            }
+          )
+        }
+      ),
+
+      /* =========================================================
+         SECTION 2 - Contact Information
+      ========================================================= */
+      #"SYSTEM_SYSRULES_sectionLayout_v1"(
+        label: "Contact Information",
+        labelSize: "MEDIUM",
+        divider: "BELOW",
+        contents: {
+          #"SYSTEM_SYSRULES_columnsLayout"(
+            columns: {
+              #"SYSTEM_SYSRULES_columnLayout"(
+                contents: {
+                  #"SYSTEM_SYSRULES_textField"(
+                    label: "Personal Email",
+                    labelPosition: "ABOVE",
+                    value: local!employee[
+                      #"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/9ed611ea-79ac-44c6-955e-d4c80f24fe99"
+                    ],
+                    readOnly: true
+                  )
+                }
+              ),
+              #"SYSTEM_SYSRULES_columnLayout"(
+                contents: {
+                  #"SYSTEM_SYSRULES_textField"(
+                    label: "Corporate Email",
+                    labelPosition: "ABOVE",
+                    value: local!employee[
+                      #"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/084c4043-d7eb-4b2c-8f86-c6af0f17975a"
+                    ],
+                    readOnly: true
+                  )
+                }
+              )
+            }
+          )
+        }
+      ),
+
+      /* =========================================================
+         SECTION 3 - Job Details
+      ========================================================= */
+      #"SYSTEM_SYSRULES_sectionLayout_v1"(
+        label: "Job Details",
+        labelSize: "MEDIUM",
+        divider: "BELOW",
+        contents: {
+          #"SYSTEM_SYSRULES_columnsLayout"(
+            columns: {
+              #"SYSTEM_SYSRULES_columnLayout"(
+                contents: {
+                  #"SYSTEM_SYSRULES_textField"(
+                    label: "Job Title",
+                    labelPosition: "ABOVE",
+                    value: local!employee[
+                      #"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/1bddc878-3c92-4286-b49b-09c74a0f468b"
+                    ],
+                    readOnly: true
+                  ),
+                  #"SYSTEM_SYSRULES_textField"(
+                    label: "Department",
+                    labelPosition: "ABOVE",
+                    value: local!employee[
+                      #"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/9d928d35-f095-4753-837b-363f0ef8466b"
+                    ],
+                    readOnly: true
+                  )
+                }
+              ),
+              #"SYSTEM_SYSRULES_columnLayout"(
+                contents: {
+                  #"SYSTEM_SYSRULES_dateTimeField"(
+                    label: "Start Date",
+                    labelPosition: "ABOVE",
+                    value: local!employee[
+                      #"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/10fa0a31-e08f-4b0a-a8fc-dff20c1caec0"
+                    ],
+                    readOnly: true
+                  ),
+                  #"SYSTEM_SYSRULES_textField"(
+                    label: "Manager ID",
+                    labelPosition: "ABOVE",
+                    value: a!defaultValue(
+                      local!employee[
+                        #"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/d4c983a7-711a-49f2-b633-d45c22dcef3b"
+                      ],
+                      "-"
+                    ),
+                    readOnly: true
+                  )
+                }
+              )
+            }
+          )
+        }
+      ),
+
+      /* =========================================================
+         SECTION 4 - Onboarding Information
+      ========================================================= */
+      #"SYSTEM_SYSRULES_sectionLayout_v1"(
+        label: "Onboarding Information",
+        labelSize: "MEDIUM",
+        divider: "BELOW",
+        contents: {
+          #"SYSTEM_SYSRULES_columnsLayout"(
+            columns: {
+              #"SYSTEM_SYSRULES_columnLayout"(
+                contents: {
+                  #"SYSTEM_SYSRULES_textField"(
+                    label: "Onboarding Stage",
+                    labelPosition: "ABOVE",
+                    value: a!defaultValue(
+                      local!employee[
+                        #"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/444eab6d-d49c-4fd2-9df8-ff344082e5c5"
+                      ],
+                      "-"
+                    ),
+                    readOnly: true
+                  ),
+                  #"SYSTEM_SYSRULES_textField"(
+                    label: "Onboarding Status",
+                    labelPosition: "ABOVE",
+                    value: a!defaultValue(
+                      local!employee[
+                        #"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/5886000f-6009-4aeb-aab0-2a4aa4a031fd"
+                      ],
+                      "-"
+                    ),
+                    readOnly: true
+                  )
+                }
+              ),
+              #"SYSTEM_SYSRULES_columnLayout"(
+                contents: {
+                  #"SYSTEM_SYSRULES_richTextDisplayField"(
+                    label: "Active",
+                    labelPosition: "ABOVE",
+                    value: {
+                      #"SYSTEM_SYSRULES_richTextIcon"(
+                        icon: if(
+                          local!employee[
+                            #"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/d8b5e486-d584-4055-b5f9-30035bea3b50"
+                          ],
+                          "check-circle",
+                          "times-circle"
+                        ),
+                        color: if(
+                          local!employee[
+                            #"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/d8b5e486-d584-4055-b5f9-30035bea3b50"
+                          ],
+                          "#138901",
+                          "NEGATIVE"
+                        ),
+                        size: "LARGE"
+                      ),
+                      " ",
+                      #"SYSTEM_SYSRULES_richTextItem_v1"(
+                        text: if(
+                          local!employee[
+                            #"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/d8b5e486-d584-4055-b5f9-30035bea3b50"
+                          ],
+                          "Active",
+                          "Inactive"
+                        ),
+                        style: "STRONG"
+                      )
+                    }
+                  )
+                }
+              )
+            }
+          )
+        }
+      ),
+
+      /* =========================================================
+         SECTION 5 - Audit Information
+      ========================================================= */
+      #"SYSTEM_SYSRULES_sectionLayout_v1"(
+        label: "Audit Information",
+        labelSize: "MEDIUM",
+        divider: "NONE",
+        contents: {
+          #"SYSTEM_SYSRULES_columnsLayout"(
+            columns: {
+              #"SYSTEM_SYSRULES_columnLayout"(
+                contents: {
+                  #"SYSTEM_SYSRULES_textField"(
+                    label: "Created By",
+                    labelPosition: "ABOVE",
+                    value: a!defaultValue(
+                      user(
+                        local!employee[
+                          #"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/b1436231-0c0e-48a9-bca4-043de7cf1234"
+                        ],
+                        "firstName"
+                      ) &amp; " " &amp; user(
+                        local!employee[
+                          #"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/b1436231-0c0e-48a9-bca4-043de7cf1234"
+                        ],
+                        "lastName"
+                      ),
+                      "-"
+                    ),
+                    readOnly: true
+                  ),
+                  #"SYSTEM_SYSRULES_dateTimeField"(
+                    label: "Created On",
+                    labelPosition: "ABOVE",
+                    value: local!employee[
+                      #"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/a2d840d4-81c6-4847-9041-3263de4fd84e"
+                    ],
+                    readOnly: true
+                  )
+                }
+              ),
+              #"SYSTEM_SYSRULES_columnLayout"(
+                contents: {
+                  #"SYSTEM_SYSRULES_textField"(
+                    label: "Modified By",
+                    labelPosition: "ABOVE",
+                    value: a!defaultValue(
+                      user(
+                        local!employee[
+                          #"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/9a7533f3-dbff-4482-8856-72a21a06363e"
+                        ],
+                        "firstName"
+                      ) &amp; " " &amp; user(
+                        local!employee[
+                          #"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/9a7533f3-dbff-4482-8856-72a21a06363e"
+                        ],
+                        "lastName"
+                      ),
+                      "-"
+                    ),
+                    readOnly: true
+                  ),
+                  #"SYSTEM_SYSRULES_dateTimeField"(
+                    label: "Modified On",
+                    labelPosition: "ABOVE",
+                    value: local!employee[
+                      #"urn:appian:record-field:v1:935291e5-21cd-4303-bec4-49aacd414213/903dfa1c-7cd3-4fe4-aaa7-610b2b671941"
+                    ],
+                    readOnly: true
+                  )
+                }
+              )
+            }
+          )
+        }
+      )
+
+    },
+    buttons: #"SYSTEM_SYSRULES_ButtonLayout"(
+      primaryButtons: {
+        #"SYSTEM_SYSRULES_buttonWidget_v1"(
+          label: "Done",
+          submit: true,
+          style: "GHOST"
+        )
+      }
+    )
+  )
+)
+</definition>
+        <namedTypedValue>
+            <name>record</name>
+            <type>
+                <name>935291e5-21cd-4303-bec4-49aacd414213</name>
+                <namespace>urn:com:appian:recordtype:datatype</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+        <isCustom>false</isCustom>
+    </interface>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000ef01-21b7-8000-bad0-01ef9001ef90_1096634"/>
+    </history>
+</contentHaul>

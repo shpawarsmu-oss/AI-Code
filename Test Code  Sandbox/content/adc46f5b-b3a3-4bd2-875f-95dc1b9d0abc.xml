@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>d5d5abc4-fc9f-41d8-a0ce-7b655ffab746</versionUuid>
+    <rulesFolder>
+        <name>TCS Rules &amp; Constants</name>
+        <uuid>adc46f5b-b3a3-4bd2-875f-95dc1b9d0abc</uuid>
+        <description>Stores expression rules, interfaces, and constants for the application</description>
+        <parentUuid>SYSTEM_RULES_ROOT</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+    </rulesFolder>
+    <roleMap public="true">
+        <role inherit="false" allowForAll="false" name="readers">
+            <users/>
+            <groups>
+                <groupUuid>fd6d09ad-4a10-4aff-8e17-f5f9a58dccce</groupUuid>
+            </groups>
+        </role>
+        <role inherit="false" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="administrators">
+            <users/>
+            <groups>
+                <groupUuid>1c1de46b-4b0a-4216-8551-3bbfcaf460ad</groupUuid>
+            </groups>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="d5d5abc4-fc9f-41d8-a0ce-7b655ffab746"/>
+    </history>
+</contentHaul>
