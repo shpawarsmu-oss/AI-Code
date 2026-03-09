@@ -1,12 +1,23 @@
-/*
- * Rule Name  : isNotNullOrEmptyOrZero
- * Description: Checks if a given value is NOT null, NOT empty, and NOT zero.
- * Input      : ri!value  - The value to validate (number, text, etc.)
- * Returns    : Boolean   - true if value is present and non-zero, false otherwise
- */
-
+<?xml version="1.0" encoding="UTF-8"?>
+<rule xmlns="http://www.appian.com/ae/types/2009" uuid="a1b2c3d4-e5f6-7890-abcd-ef1234567890" version="1.0">
+    <name>isNotNullOrEmptyOrZero</name>
+    <description>Checks if a given value is NOT null, NOT empty, and NOT zero. Returns true if value is valid (present and non-zero), false otherwise.</description>
+    <ruleInputs>
+        <ruleInput>
+            <name>value</name>
+            <type>Text</type>
+            <isArray>false</isArray>
+            <defaultValue/>
+        </ruleInput>
+    </ruleInputs>
+    <expressionType>EXPRESSION</expressionType>
+    <expression>
+        <![CDATA[
 and(
   not(a!isNullOrEmpty(ri!value)),
   not(ri!value = 0),
   not(ri!value = "0")
 )
+        ]]>
+    </expression>
+</rule>
