@@ -672,13 +672,13 @@
         <node uuid="a7db081c-b2bc-4596-8b90-1af2c9225a9a">
           <guiId>1</guiId>
           <owner/>
-          <icon id="51"/>
+          <icon id="52"/>
           <picon id="0"/>
           <fname>
             <string-map>
               <pair>
                 <locale country="US" lang="en" variant=""/>
-                <value><![CDATA[End Node]]></value>
+                <value><![CDATA[Terminate Node]]></value>
               </pair>
             </string-map>
           </fname>
@@ -688,7 +688,7 @@
             <string-map>
               <pair>
                 <locale country="US" lang="en" variant=""/>
-                <value><![CDATA[End Node]]></value>
+                <value><![CDATA[Terminate Node]]></value>
               </pair>
             </string-map>
           </display>
@@ -705,8 +705,8 @@
           <lane>0</lane>
           <overrideLaneAssignment>true</overrideLaneAssignment>
           <ac>
-            <local-id>core.1</local-id>
-            <name><![CDATA[End Node]]></name>
+            <local-id>core.2</local-id>
+            <name><![CDATA[Terminate Node]]></name>
             <acps>
               <acp name="pmID">
                 <a:value xsi:nil="true" xsi:type="a:ProcessModel"/>
@@ -720,6 +720,9 @@
                 <a:generated>false</a:generated>
                 <a:enumeration/>
                 <a:customDisplayReference/>
+              </acp>
+              <acp name="terminateAll">
+                <a:value xsi:type="a:boolean">true</a:value>
               </acp>
               <acp name="inMap">
                 <a:value xsi:nil="true" xsi:type="a:Bean?list"/>
