@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>c7d8e9f0-a1b2-3c4d-5e6f-7a8b9c0d1e2f</versionUuid>
+    <rule>
+        <name>TCS_isNotNullOrEmptyOrZero</name>
+        <uuid>c7d8e9f0-a1b2-3c4d-5e6f-7a8b9c0d1e2f</uuid>
+        <description>Checks if a given value is NOT null, NOT empty, and NOT zero. Returns true if value is valid (present and non-zero), false otherwise.</description>
+        <parentUuid>adc46f5b-b3a3-4bd2-875f-95dc1b9d0abc</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>and(
+  not(a!isNullOrEmpty(ri!value)),
+  not(ri!value = 0),
+  not(ri!value = "0")
+)</definition>
+        <namedTypedValue>
+            <name>value</name>
+            <description>The value to validate (text or number)</description>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="c7d8e9f0-a1b2-3c4d-5e6f-7a8b9c0d1e2f"/>
+    </history>
+</contentHaul>
