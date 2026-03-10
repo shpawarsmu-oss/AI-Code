@@ -1,0 +1,10 @@
+{
+  "appian_export_version": "1.0",
+  "objectType": "ExpressionRule",
+  "name": "isBlank",
+  "inputs": [
+    {"name": "value", "type": "Any"}
+  ],
+  "expression": "isnull(ri!value) or trim(ri!value) = \"\"",
+  "description": "Returns true if value is null or a string with only whitespace"
+}

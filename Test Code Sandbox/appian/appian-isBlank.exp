@@ -1,0 +1,13 @@
+"""
+Appian Expression Rule: isBlank
+
+Rule input:
+- name: value
+  type: Any
+
+Expression:
+isnull(ri!value) or trim(ri!value) = ""
+
+Notes:
+- Paste the expression into an Appian Expression Rule's expression editor and set the input variable 'value' type to 'Any'.
+"""
