@@ -1,0 +1,32 @@
+name: Build Appian Import ZIP
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-zip:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Build Appian import ZIP
+        run: python build_appian_package.py
+
+      - name: Commit and push ZIP
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add TestCodeSandbox_Appian_IMPORT.zip
+          git diff --cached --quiet || git commit -m "Auto-generated Appian import ZIP"
+          git push
